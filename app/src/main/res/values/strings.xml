@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">RackM8</string>
+
+    <string name="text_home">Home Fragment</string>
+    <string name="text_notifications">Notifications Fragment</string>
+    <string name="text_search">Search Fragment</string>
+
+    <string name="menu_nearby">Nearby</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_map">Map</string>
 </resources>
