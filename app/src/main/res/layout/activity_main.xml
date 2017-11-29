@@ -5,7 +5,8 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.jeffhanke.rackm8.MainActivity">
 
     <FrameLayout
         android:id="@+id/container"
@@ -14,10 +15,7 @@
         android:layout_weight="1"
         android:background="#f1f1f1">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="search"/>
+
 
     </FrameLayout>
 
