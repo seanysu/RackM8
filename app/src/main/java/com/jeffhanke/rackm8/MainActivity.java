@@ -17,30 +17,48 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView mBottomNav = (BottomNavigationView) findViewById(R.id.navigation);
+        final BottomNavigationView mBottomNav = (BottomNavigationView) findViewById(R.id.navigation);
 
         mBottomNav.setOnNavigationItemSelectedListener
                 (new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         Fragment selectedFragment = null;
+                        int x = 1;
                         switch (item.getItemId()) {
                             case R.id.menu_search:
                                 selectedFragment = search_frag.newInstance();
+                                x = 0;
                                 break;
                             case R.id.menu_nearby:
                                 selectedFragment = nearby_frag.newInstance();
+                                x = 1;
                                 break;
                             case R.id.menu_map:
                                 selectedFragment = map_frag.newInstance();
+                                x = 2;
                                 break;
                         }
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.container, selectedFragment);
                         transaction.commit();
+                        mBottomNav.getMenu().getItem(0).setChecked(false);
+                        mBottomNav.getMenu().getItem(1).setChecked(false);
+                        mBottomNav.getMenu().getItem(2).setChecked(false);
+                        mBottomNav.getMenu().getItem(x).setChecked(true);
+
                         return true;
                     }
                 });
+
+        //Manually displaying the first fragment - one time only
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, nearby_frag.newInstance());
+        transaction.commit();
+
+        //Used to select an item programmatically
+        mBottomNav.getMenu().getItem(0).setChecked(false);
+        mBottomNav.getMenu().getItem(1).setChecked(true);
 
     }
 
